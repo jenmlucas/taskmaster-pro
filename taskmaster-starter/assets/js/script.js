@@ -190,15 +190,6 @@ $(".card .list-group").sortable({
        var tempArr = [];
    //loop over current set of children in sortable list
    $(this).children().each(function() {
-     //trim down list's ID to match object property
-     var arrName = $(this)
-       .attr("id")
-       .replace("list-", "");
-
-       //update array on task object and save
-       tasks[arrName] = tempArr;
-       saveTasks();
-
      var text = $(this)
        .find("p")
        .text()
@@ -214,8 +205,16 @@ $(".card .list-group").sortable({
        date: date
      });
    });
+    //trim down list's ID to match object property
+    var arrName = $(this)
+    .attr("id")
+    .replace("list-", "");
+     //update array on task object and save
+     tasks[arrName] = tempArr;
+     saveTasks();
  }
 });
+ 
 
 $("#trash").droppable({
   accept: ".card .list-group-item",
